@@ -93,7 +93,7 @@ background: #CA1D5F;
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Messenger</li>
           </ol>
         </div><!-- /.col -->
@@ -192,14 +192,14 @@ background: #CA1D5F;
                        src="{{ (!empty($message->user->image)) ? url('public/upload/user_images/' . $message->user->image) : url('public/upload/' . 'No_image.png')}}"
                        alt="User profile picture">
               </div>
-							<div class="col-md-9 col-sm-9 col-9 comment rounded mb-2" style="{{ (Auth::user()->id == $message->user_id) ? 'background:#138496' : '' }}">
+							<div class="col-md-9 col-sm-9 col-9 comment rounded mb-2" style="{{ (Auth::user()->id == $message->user_id) ? 'background:#28a745' : '' }}">
 								<h4 class="m-0"><a href="#">{{ $message->user->name }}</a></h4>
 							    <time class="text-white ml-3">{{ date('M Y H:m',strtotime($message->created_at)) }}</time>
 							    <like></like>
 							    <p class="mb-0 text-white">{{ $message->text }}</p>
 							</div>
               @else
-              <div class="col-md-9 col-sm-9 col-9 comment rounded mb-2" style="{{ (Auth::user()->id == $message->user_id) ? 'background:#138496' : '' }}">
+              <div class="col-md-9 col-sm-9 col-9 comment rounded mb-2" style="{{ (Auth::user()->id == $message->user_id) ? 'background:#28a745' : '' }}">
 								<h4 class="m-0"><a href="#">{{ $message->user->name }}</a></h4>
 							    <time class="text-white ml-3">{{ date('M Y H:m',strtotime($message->created_at)) }}</time>
 							    <like></like>
@@ -217,7 +217,7 @@ background: #CA1D5F;
 				</ul>
         @endforeach
 
-				<div class="row comment-box-main p-3 rounded-bottom" style="background:#A8A8A8;margin-right: 20px;">
+				<div class="row comment-box-main p-3 rounded-bottom" style="background:#17171e;margin-right: 20px;">
 			  		<div class="col-md-9 col-sm-9 col-9 pr-0 comment-box">
             <form class="" action="{{ route('chat.store.individual') }}" method="post">
               @csrf

@@ -22,24 +22,29 @@ Route::get('/register', function () {
 });
 
 
-Route::get('/test-mail', function () {
-  try{
-
-    Mail::to('wall.mate@gmail.com')->send(new TestMail('it is work'));
-
-  }catch(\Exception $e){
-    dd($e);
-  }
-
-  return 'Success';
-
-});
+// Route::get('/test-mail', function () {
+//   try{
+//
+//     Mail::to('wall.mate@gmail.com')->send(new TestMail('it is work'));
+//
+//   }catch(\Exception $e){
+//     dd($e);
+//   }
+//
+//   return 'Success';
+//
+// });
 
 
 Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/register', 'Backend\RegisterController@view')->name('registerrr');
+Route::post('/register/storw', 'Backend\RegisterController@register')->name('reg.store');
+Route::get('/verify', 'Backend\RegisterController@everify')->name('everify');
+Route::post('/verify/login', 'Backend\RegisterController@verify_login')->name('verify.login');
 
 Route::group(['middleware' => 'auth'], function(){
 
@@ -49,8 +54,16 @@ Route::group(['middleware' => 'auth'], function(){
   Route::post('/chat/store/individual', 'Backend\ChatController@individualStore')->name('chat.store.individual');
   Route::get('/chat/individual', 'Backend\ChatController@chatIndividual')->name('chat.individual');
 
+  //GroupChat
+  Route::get('/group/chat/add', 'Backend\GroupChatController@add')->name('group.chat.add');
+  Route::post('/group/chat/create', 'Backend\GroupChatController@create')->name('group.chat.create');
+  Route::get('/custom/group/chat', 'Backend\GroupChatController@customGroupView')->name('group.custom.chat');
+  Route::post('/group/chat/store', 'Backend\GroupChatController@store')->name('group.chat.store');
+
     Route::prefix('users')->group(function(){
         Route::get('/view', 'Backend\UserController@view')->name('users.view');
+        Route::get('/approve/{id}', 'Backend\UserController@approve')->name('users.approve');
+        Route::get('/unapproved/view', 'Backend\UserController@viewUnapprove')->name('unapprovedusers.view');
         Route::get('/add', 'Backend\UserController@add')->name('users.add');
         Route::post('/store', 'Backend\UserController@store')->name('users.store');
         Route::get('/edit/{id}', 'Backend\UserController@edit')->name('users.edit');
@@ -106,7 +119,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::prefix('categories')->group(function(){
         Route::get('/view', 'Backend\CategoryController@view')->name('categories.view');
         Route::get('/add', 'Backend\CategoryController@add')->name('categories.add');
+        Route::get('/ecat/add', 'Backend\CategoryController@ecatadd')->name('ecategories.add');
         Route::post('/store', 'Backend\CategoryController@store')->name('categories.store');
+        Route::post('/ecat/store', 'Backend\CategoryController@ecatstore')->name('ecategories.store');
         Route::get('/edit/{id}', 'Backend\CategoryController@edit')->name('categories.edit');
         Route::post('/update/{id}', 'Backend\CategoryController@update')->name('categories.update');
         Route::post('/delete/{id}', 'Backend\CategoryController@delete')->name('categories.delete');
@@ -119,6 +134,15 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/edit/{id}', 'Backend\ProductController@edit')->name('products.edit');
         Route::post('/update/{id}', 'Backend\ProductController@update')->name('products.update');
         Route::post('/delete/{id}', 'Backend\ProductController@delete')->name('products.delete');
+
+        Route::get('/eview', 'Backend\ProductController@eview')->name('eproducts.view');
+        Route::get('/eadd', 'Backend\ProductController@eadd')->name('eproducts.add');
+        Route::post('/estore', 'Backend\ProductController@estore')->name('eproducts.store');
+        Route::get('/eedit/{id}', 'Backend\ProductController@eedit')->name('eproducts.edit');
+        Route::post('/eupdate/{id}', 'Backend\ProductController@eupdate')->name('eproducts.update');
+        Route::post('/edelete/{id}', 'Backend\ProductController@edelete')->name('eproducts.delete');
+
+        Route::get('/ecat', 'Backend\CategoryController@ecatview')->name('eproducts.category');
     });
 
     Route::prefix('purchases')->group(function(){
@@ -222,7 +246,27 @@ Route::group(['middleware' => 'auth'], function(){
       Route::post('/cost/update/{id}', 'Backend\Account\OtherCostController@update')->name('account.cost.update');
     });
 
+    //Orders Routes
+    Route::group(['prefix'=>'orders'], function(){
+
+      Route::get('/', 'Backend\OrdersController@index')->name('admin.orders');
+      Route::get('/view/{id}', 'Backend\OrdersController@show')->name('admin.order.show');
+      Route::post('/delete/{id}', 'Backend\OrdersController@delete')->name('admin.order.delete');
+
+      Route::post('/completed/{id}', 'Backend\OrdersController@completed')->name('admin.order.completed');
+      Route::post('/paid/{id}', 'Backend\OrdersController@paid')->name('admin.order.paid');
+
+      Route::post('/charge-update/{id}', 'Backend\OrdersController@chargeUpdate')->name('admin.order.charge');
+      Route::get('/invoice/{id}', 'Backend\OrdersController@generateInvoice')->name('admin.order.invoice');
+
+
+    });
+
 });
+
+
+
+
 
 // User Management		Adding users	List of users	Removing Users
 //

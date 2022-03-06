@@ -1,0 +1,8 @@
+index.php file is rout postion 
+
+and my database filename pos v1.sql here location pos/pos v1.sql
+
+login admin
+username: cse.devsahadat@gmail.com
+password: 123456
+

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Point Of Sale</title>
+  <title>Inventory Management System</title>
 
   <script src="{{ asset('public/backend') }}/plugins/jquery/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
@@ -48,12 +48,48 @@
     .m-auto{
       margin: 0 auto;
     }
+    .layout-fixed .main-sidebar{
+      background: #0f0f18;
+      /* 343A40 */
+    }
+   
+    .navbar-light .navbar-nav .nav-link {
+    color: rgb(255 255 255 / 70%);
+}
+    .navbar{
+      background: #17171e;
+      /* FFFFFF */
+    }
+    .navbar a:hover {
+      background-color: yellow;
+}
+    .main-footer{
+      background: #17171e;
+      /* FFFFFF */
+    }
+    .card-primary.card-outline{
+      width:370px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 18px;
+    }
+    .chat_box{
+      background: #ffffff;
+    }
+    .chat_btn{
+      background: ##28a745;
+    }
+    .text_white{
+      color:#FFFFFF!important;
+    }
   </style>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/notify.js/2.0.3/notify.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
+@if(Auth::user()->approved == '1')
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -73,24 +109,22 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('chat') }}" class="nav-link">Group Chat</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <p class="nav-link">individual Chat--></p>
-      </li>
       @php
       $users = App\User::where('id','!=',Auth::user()->id)->get();
       @endphp
       <form class="" action="{{ route('chat.individual') }}" method="GET">
         <li class="nav-item d-none d-sm-inline-block">
-          <select class="form-control form-sm" name="user_id">
-            <option value="">Select User</option>
+          <select class="form-control-sm form-sm chat_box" name="user_id">
+            <option value="">Select User To Chat</option>
             @foreach($users as $user)
               <option value="{{ $user->id }}">{{ $user->name }}</option>
             @endforeach
           </select>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <button type="submit" class="btn btn-sm btn-success" style="margin-bottom: 7px;">Inbox</button>
+          <button type="submit" class="btn btn-sm btn-success chat_btn" style="margin-bottom: 2px;">Inbox -></button>
         </li>
+     
       </form>
     </ul>
 
@@ -133,13 +167,13 @@
     </ul>
   </nav>
   <!-- /.navbar -->
-
+@endif
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-      <img src="{{ asset('public/backend') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Dashboard</span>
+      <img src="{{ url('public/upload/logo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 1">
+      <span class="brand-text font-weight-light">IMS Dashboard</span>
     </a>
 
     <!-- Sidebar -->
@@ -184,10 +218,10 @@
   @endif -->
 
   <footer class="main-footer">
-    <strong>Copyright By &copy;   <a href="">Team Learner</a>.</strong>
+    <strong>Copyright By &copy;   <a href="">Team Fix-It</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Designed & Developed by </b> Team Learner
+      <b>Designed & Developed by </b> Team Fix-It
     </div>
   </footer>
 

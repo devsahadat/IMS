@@ -90,10 +90,30 @@ background: #CA1D5F;
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0">Messenger</h1>
+          <li class="nav-item d-none d-sm-inline-block mt-5">
+            <a href="{{ route('group.chat.add') }}" class="nav-link btn btn-sm btn-info">Create a Group</a>
+          </li>
+          <form class="" action="{{ route('group.custom.chat') }}" method="GET">
+            <li class="nav-item d-none d-sm-inline-block mt-5">
+              <p class="badge badge-primary">My Groups --> </p>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+              <select class="form-control form-sm" name="group_name">
+                <option value="">Select Group</option>
+                @foreach($groups as $group)
+                  <option value="{{ $group->name }}">{{ $group->name }}</option>
+                @endforeach
+              </select>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+              <button type="submit" class="btn btn-sm btn-success" style="margin-bottom: 7px;">Inbox</button>
+            </li>
+          </form>
+
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Categories</li>
           </ol>
         </div><!-- /.col -->
@@ -113,7 +133,7 @@ background: #CA1D5F;
           <!-- Custom tabs (Charts with tabs)-->
           <div class="card">
             <div class="card-header">
-              <h3>Group Chat
+              <h3>Public Group Chat
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -191,14 +211,14 @@ background: #CA1D5F;
                        src="{{ (!empty($message->user->image)) ? url('public/upload/user_images/' . $message->user->image) : url('public/upload/' . 'No_image.png')}}"
                        alt="User profile picture">
               </div>
-							<div class="col-md-9 col-sm-9 col-9 comment rounded mb-2" style="{{ (Auth::user()->id == $message->user_id) ? 'background:#138496' : '' }}">
+							<div class="col-md-9 col-sm-9 col-9 comment rounded mb-2" style="{{ (Auth::user()->id == $message->user_id) ? 'background:#28a745' : '' }}">
 								<h4 class="m-0"><a href="#">{{ $message->user->name }}</a></h4>
 							    <time class="text-white ml-3">{{ date('M Y H:m',strtotime($message->created_at)) }}</time>
 							    <like></like>
 							    <p class="mb-0 text-white">{{ $message->text }}</p>
 							</div>
               @else
-              <div class="col-md-9 col-sm-9 col-9 comment rounded mb-2" style="{{ (Auth::user()->id == $message->user_id) ? 'background:#138496' : '' }}">
+              <div class="col-md-9 col-sm-9 col-9 comment rounded mb-2" style="{{ (Auth::user()->id == $message->user_id) ? 'background:#28a745' : '' }}">
 								<h4 class="m-0"><a href="#">{{ $message->user->name }}</a></h4>
 							    <time class="text-white ml-3">{{ date('M Y H:m',strtotime($message->created_at)) }}</time>
 							    <like></like>
@@ -216,7 +236,7 @@ background: #CA1D5F;
 				</ul>
         @endforeach
 
-				<div class="row comment-box-main p-3 rounded-bottom" style="background:#A8A8A8;margin-right: 20px;">
+				<div class="row comment-box-main p-3 rounded-bottom" style="background:#17171e;margin-right: 20px;">
 			  		<div class="col-md-9 col-sm-9 col-9 pr-0 comment-box">
             <form class="" action="{{ route('chat.store') }}" method="post">
               @csrf

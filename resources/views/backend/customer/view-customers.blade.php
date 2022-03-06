@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Customers</li>
           </ol>
         </div><!-- /.col -->
@@ -58,7 +58,12 @@
                       <td>{{ $customer->address }}</td>
                       <td>
                         <a href="{{ route('customers.edit',$customer->id) }}" title="Edit" class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i> </a>
+                        @php
+                          $customer_check = App\Model\Payment::where('customer_id',$customer->id)->first();
+                        @endphp
+                        @if($customer_check == null)
                         <a href="#deleteModal{{ $customer->id }}" data-toggle="modal" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                        @endif
 
                       <div class="modal fade" id="deleteModal{{ $customer->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">

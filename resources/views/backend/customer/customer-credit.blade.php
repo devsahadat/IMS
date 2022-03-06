@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Customers</li>
           </ol>
         </div><!-- /.col -->
@@ -33,7 +33,7 @@
           <div class="card">
             <div class="card-header">
               <h3>Credit Customers List
-                <a  target="_blank" href="{{ route('customers.credit.pdf') }}" class="btn btn-success float-right"> <i class="fa fa-download"></i>Download PDF</a>
+                <a  target="_blank" href="{{ route('customers.credit.pdf') }}" class="btn btn-success float-right"> <i class="fa fa-download"></i> Download PDF</a>
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">

@@ -8,15 +8,15 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-4">
-          <h1 class="m-0">The Point of Sale</h1>
+          <h1 class="m-0">The Inventory Management System</h1>
         </div><!-- /.col -->
         <div class="col-sm-4">
 
         </div>
         <div class="col-sm-4">
-          <a href="{{ route('invoice.add') }}" class="btn btn-primary btn-block" style="float:right;">Quick Sales</a>
+          <a href="{{ route('invoice.add') }}" class="btn btn-success btn-block" style="float:right;">Quick Sales</a>
           <!-- <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Dashboard v1</li>
           </ol> -->
         </div><!-- /.col -->
@@ -88,7 +88,7 @@
               <p>Total Profit ({{ date('Y M') }})</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="fas fa-chart-pie"></i>
             </div>
             <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
           </div>
@@ -107,7 +107,7 @@
               <p>Total Product Item</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="fas fa-shopping-bag"></i>
             </div>
             <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
           </div>
@@ -138,7 +138,7 @@
               <p>Total Customers</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="fas fa-user-plus"></i>
             </div>
             <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
           </div>

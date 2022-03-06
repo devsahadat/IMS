@@ -19,7 +19,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Notices</li>
           </ol>
         </div><!-- /.col -->
@@ -35,7 +35,7 @@
 
       </div>
       <div class="col-md-4">
-        <h2 class="text-center" style="background:skyblue;padding:3px;border-radius:5px;">List of Notices</h2>
+        <h2 class="text-center" style="background:#28a745;padding:3px;border-radius:5px;">List of Notices</h2>
       </div>
       <div class="col-md-4">
 

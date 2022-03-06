@@ -78,9 +78,9 @@
             <tr>
               <td width="20%" class="text-center"> <img src="{{ url('public/upload/logo.png') }}" alt="" style="width:80px; height:70px;"> </td>
               <td class="text-center" width="20%">
-                <h4><strong>Durgapur School</strong></h4>
+                <h4><strong>Inventory Management System</strong></h4>
                 <h5><strong>Sylhet, Bangladesh</strong></h5>
-                <h6><strong>www.afzalshuhag.com</strong></h6>
+                <h6><strong>www.teamfix-it.com</strong></h6>
               </td>
               <td width="25%" class="text-center"> <img src="{{ url('public/upload/employee_images/'. $totalattendgroupbyid['0']->user->image) }}" alt="" style="width:80px; height:70px;"> </td>
             </tr>
@@ -138,9 +138,9 @@
             <tr>
               <td width="20%" class="text-center"> <img src="{{ url('public/upload/logo.png') }}" alt="" style="width:80px; height:70px;"> </td>
               <td class="text-center" width="20%">
-                <h4><strong>Durgapur School</strong></h4>
+                <h4><strong>Inventory Management System</strong></h4>
                 <h5><strong>Sylhet, Bangladesh</strong></h5>
-                <h6><strong>www.afzalshuhag.com</strong></h6>
+                <h6><strong>www.teamfix-it.com</strong></h6>
               </td>
               <td width="25%" class="text-center"> <img src="{{ url('public/upload/employee_images/'. $totalattendgroupbyid['0']->user->image) }}" alt="" style="width:80px; height:70px;"> </td>
             </tr>

@@ -11,6 +11,7 @@ use App\Model\Purchase;
 use App\Model\Product;
 use App\Model\Supplier;
 use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
-        $this->middleware(['auth']);
+         $this->middleware('auth');
+        //$this->middleware(['auth']);
     }
 
     /**
@@ -32,26 +33,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $data['products'] = Product::all()->count();
-      $data['suppliers'] = Supplier::all()->count();
-      $data['customers'] = Customer::all()->count();
-      $data['employees'] = User::where('role','employee')->get()->count();
-      $date = date('Y-m');
-      $invoices = Invoice::where('date','like',$date.'%')->get();
-      $sum = 0;
-      $due = 0;
-      foreach ($invoices as $key => $value) {
-        $single_sale = Payment::where('invoice_id',$value->id)->first()->paid_amount;
-        $single_due = Payment::where('invoice_id',$value->id)->first()->due_amount;
-        $sum += $single_sale;
-        $due += $single_due;
+      if(Auth::user()->approved == '1'){
+        $data['products'] = Product::all()->count();
+        $data['suppliers'] = Supplier::all()->count();
+        $data['customers'] = Customer::all()->count();
+        $data['employees'] = User::where('role','employee')->get()->count();
+        $date = date('Y-m');
+        $invoices = Invoice::where('date','like',$date.'%')->get();
+        $sum = 0;
+        $due = 0;
+        foreach ($invoices as $key => $value) {
+          $single_sale = Payment::where('invoice_id',$value->id)->first()->paid_amount;
+          $single_due = Payment::where('invoice_id',$value->id)->first()->due_amount;
+          $sum += $single_sale;
+          $due += $single_due;
+        }
+        $data['sales'] = (int)$sum;
+        $data['dues'] = (int)$due;
+        $data['purchases'] = Purchase::where('date','like',$date.'%')->get()->sum('buying_price');
+        $data['profits'] = (int)$data['sales'] - (int)$data['purchases'];
+        $data['employees'] = User::where('role','employee')->get()->count();
+        $data['users'] = User::all();
+
+        return view('backend.layouts.home',$data);
+      }else{
+        return view('backend.layouts.aprove');
       }
-      $data['sales'] = (int)$sum;
-      $data['dues'] = (int)$due;
-      $data['purchases'] = Purchase::where('date','like',$date.'%')->get()->sum('buying_price');
-      $data['profits'] = (int)$data['sales'] - (int)$data['purchases'];
-      $data['employees'] = User::where('role','employee')->get()->count();
-      $data['users'] = User::all();
-      return view('backend.layouts.home',$data);
     }
 }

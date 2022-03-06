@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">User</li>
           </ol>
         </div><!-- /.col -->
@@ -33,7 +33,7 @@
           <div class="card">
             <div class="card-header">
               <h3>Edit User
-                <a href="{{ route('users.view') }}" class="btn btn-success float-right"> <i class="fa fa-list"></i>User List</a>
+                <a href="{{ route('users.view') }}" class="btn btn-success float-right"> <i class="fa fa-list"></i> User List</a>
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -46,6 +46,7 @@
                       <option value="">Select Role</option>
                       <option value="Admin" {{ ($editData->role == "Admin") ? 'selected' : '' }}>Admin</option>
                       <option value="User" {{ ($editData->role == "User") ? 'selected' : '' }}>User</option>
+                      <option value="Employee" {{ ($editData->role == "Employee") ? 'selected' : '' }}>Employee</option>
                     </select>
                     <font style="color:red;">{{ ($errors->has('role')) ? ($errors->first('role')) : '' }}</font>
                   </div>

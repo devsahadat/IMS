@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Category;
+use App\Ecategory;
 use Auth;
 
 class CategoryController extends Controller
@@ -62,4 +63,30 @@ class CategoryController extends Controller
     $category->delete();
     return redirect()->route('categories.view')->with('success_message_top', 'Data deleted Successfully!!');
   }
+
+  public function ecatview()
+  {
+    $allData = Ecategory::all();
+    return view('backend.category.view-e_categories',compact('allData'));
+  }
+
+  public function ecatadd()
+  {
+    return view('backend.category.add-ecategory');
+  }
+
+  public function ecatstore(Request $request)
+  {
+    $this->validate($request,[
+      'name' => 'required',
+    ]);
+
+    $ecategory = new Ecategory();
+
+    $ecategory->name = $request->name;
+    $ecategory->save();
+
+    return redirect()->route('eproducts.category')->with('success_message_top', 'Data Inserted Successfully!!');
+  }
+
 }

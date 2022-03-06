@@ -13,6 +13,20 @@ class UserController extends Controller
       return view('backend.user.view-user',$data);
     }
 
+    public function viewUnapprove()
+    {
+      $data['users'] = User::where('approved','0')->get();
+      return view('backend.user.view-unapproveduser',$data);
+    }
+
+    public function approve(Request $request,$id)
+    {
+      $user = User::find($id);
+      $user->approved = '1';
+      $user->save();
+      return redirect()->route('unapprovedusers.view')->with('success_message_top','User has been approved!');
+    }
+
     public function add()
     {
       return view('backend.user.add-user');
@@ -23,7 +37,7 @@ class UserController extends Controller
       $this->validate($request,[
         'role' => 'required',
         'email' => 'required|unique:users,email',
-        'name' => 'required',
+        'name' => 'required|string',
         'password' => 'confirmed',
       ],
       [
@@ -33,10 +47,12 @@ class UserController extends Controller
 
       $data = new User();
 
+      $code = rand(1111,9999);
+      $data->code = $code;
+      $data->password = bcrypt($code);
       $data->role = $request->role;
       $data->name = $request->name;
       $data->email = $request->email;
-      $data->password = bcrypt($request->password);
       $data->save();
 
       return redirect()->route('users.view')->with('success_message_top', 'Data inserted Successfully!!');
@@ -55,7 +71,7 @@ class UserController extends Controller
       $this->validate($request,[
         'role' => 'required',
         'email' => 'required',
-        'name' => 'required',
+        'name' => 'required|string',
         'password' => 'confirmed',
       ],
       [

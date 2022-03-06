@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Employee Salary</li>
           </ol>
         </div><!-- /.col -->
@@ -34,7 +34,7 @@
             <div class="card-header">
               <h3>
                 Increment Employee Salary
-                <a href="{{ route('employee.salary.view') }}" class="btn btn-success float-right"> <i class="fa fa-list"></i>Employee Salary List</a>
+                <a href="{{ route('employee.salary.view') }}" class="btn btn-success float-right"> <i class="fa fa-list"></i> Employee Salary List</a>
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">

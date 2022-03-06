@@ -43,10 +43,10 @@ class EmployeeRegController extends Controller
   public function store(Request $request)
   {
     $this->validate($request,[
-      'name' => 'required',
-      'fname' => 'required',
-      'mname' => 'required',
-      'mobile' => 'required',
+      'name' => 'required|string',
+      'fname' => 'required|string',
+      'mname' => 'required|string',
+      'mobile' => 'required|unique:users,mobile',
       'address' => 'required',
       'gender' => 'required',
       'religion' => 'required',
@@ -54,7 +54,7 @@ class EmployeeRegController extends Controller
       'join_date' => 'required',
       'designation_id' => 'required',
       'salary' => 'required',
-      'image' => 'required|image',
+      // 'image' => 'required|image',
     ]
     );
     DB::transaction(function() use($request){
@@ -89,6 +89,7 @@ class EmployeeRegController extends Controller
       $user->password = bcrypt($code);
       $user->id_no = $final_id_no;
       $user->name = $request->name;
+      $user->email = $request->email;
       $user->role = 'Employee';
       $user->fname = $request->fname;
       $user->mname = $request->mname;
@@ -136,6 +137,7 @@ class EmployeeRegController extends Controller
     $user->mname = $request->mname;
     $user->mobile = $request->mobile;
     $user->address = $request->address;
+    $user->email = $request->email;
     $user->gender = $request->gender;
     $user->religion = $request->religion;
     $user->designation_id = $request->designation_id;

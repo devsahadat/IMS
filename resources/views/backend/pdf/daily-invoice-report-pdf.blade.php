@@ -9,16 +9,17 @@
       <div class="row">
         <div style="margin:0 auto; text-align:center">
           <p style="text-align:center">Invoice Report ({{ date('Y-m-d', strtotime($start_date)) }} - {{ date('Y-m-d', strtotime($end_date)) }})</p>
-          <strong><span style="font-size:20px;">Team Learner POS <br>
-            Shibganj,Sylhet
+          <div><img src="{{ url('public/upload/logo.png') }}" alt="" style="width:80px; height:70px;"></div>
+          <strong><span style="font-size:20px; color:#28a745">Team Fix-IT IMS
           </span></strong>
-          <p style="text-align:center">Call : +8801720553737</p>
+          <p style="text-align: center;"><b>Tilaghor,Sylhet</b><br>Call : +8801738309749</p>
+        </div>
         </div>
       </div>
       <hr>
       <div class="row">
         <table border="1" width="100%">
-              <tr>
+              <tr style="background-color: #28a745;">
                 <th>SL.</th>
                 <th>Custome Name</th>
                 <th>Invoice No</th>
@@ -45,7 +46,7 @@
               @endforeach
               <tr>
                 <td colspan="5" style="text-align:right;">Grand Total</td>
-                <td>{{ $sum }}</td>
+                <td style="background-color: red;"><strong>{{ $sum }}</strong></td>
               </tr>
             </tbody>
         </table>
@@ -55,7 +56,7 @@
             <?php
               $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
              ?>
-             <i>Printing Time : {{ $date->format('F j, Y, g:i a') }}</i>
+             <i style="background-color: #28a745;">Printing Time : {{ $date->format('F j, Y, g:i a') }}</i>
         </div>
       </div>
     </div>

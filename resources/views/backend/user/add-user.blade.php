@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">User</li>
           </ol>
         </div><!-- /.col -->
@@ -33,7 +33,7 @@
           <div class="card">
             <div class="card-header">
               <h3>Add User
-                <a href="{{ route('users.view') }}" class="btn btn-success float-right"> <i class="fa fa-list"></i>User List</a>
+                <a href="{{ route('users.view') }}" class="btn btn-success float-right"> <i class="fa fa-list"></i> User List</a>
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -46,6 +46,7 @@
                       <option value="">Select Role</option>
                       <option value="Admin">Admin</option>
                       <option value="User">User</option>
+                      <option value="Employee">Employee</option>
                     </select>
                     <font style="color:red;">{{ ($errors->has('role')) ? ($errors->first('role')) : '' }}</font>
                   </div>
@@ -59,7 +60,7 @@
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                     <font style="color:red;">{{ ($errors->has('email')) ? ($errors->first('email')) : '' }}</font>
                   </div>
-                  <div class="form-group col-md-4">
+                  <!-- <div class="form-group col-md-4">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password">
                     <font style="color:red;">{{ ($errors->has('password')) ? ($errors->first('password')) : '' }}</font>
@@ -67,7 +68,7 @@
                   <div class="form-group col-md-4">
                     <label for="password">Confrim Password</label>
                     <input type="password" class="form-control" id="password" name="password_confirmation">
-                  </div>
+                  </div> -->
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>

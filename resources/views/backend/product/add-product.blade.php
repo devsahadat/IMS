@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Products</li>
           </ol>
         </div><!-- /.col -->
@@ -37,7 +37,7 @@
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
-              <form method="post" action="{{ route('products.store') }}" id="myForm">
+              <form method="post" action="{{ route('products.store') }}" id="myForm" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row">
                   <div class="form-group col-md-6">
@@ -78,6 +78,12 @@
                   </select>
                     <font style="color:red;">{{ ($errors->has('category_id')) ? ($errors->first('category_id')) : '' }}</font>
                   </div>
+
+                  <!-- <div class="form-group col-md-6">
+                      <label for="name">Image</label>
+                      <input type="file" class="form-control" name="product_image[]" multiple>
+                      <input type="file" class="form-control" name="product_image[]" multiple>
+                  </div> -->
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>

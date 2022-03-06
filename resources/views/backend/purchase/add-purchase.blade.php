@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Purchases</li>
           </ol>
         </div><!-- /.col -->
@@ -46,11 +46,11 @@
                     <font style="color:red;">{{ ($errors->has('date')) ? ($errors->first('date')) : '' }}</font>
                   </div>
 
-                  <div class="form-group col-md-4">
+                  <!-- <div class="form-group col-md-4">
                     <label for="name">Purchase No</label>
                     <input class="form-control form-control-sm" type="text" id="purchase_no" name="purchase_no">
                     <font style="color:red;">{{ ($errors->has('date')) ? ($errors->first('date')) : '' }}</font>
-                  </div>
+                  </div> -->
 
                   <div class="form-group col-md-4">
                     <label for="name">Supplier Name</label>

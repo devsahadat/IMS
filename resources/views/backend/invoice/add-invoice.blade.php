@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Invoices</li>
           </ol>
         </div><!-- /.col -->
@@ -33,12 +33,12 @@
           <div class="card">
             <div class="card-header">
               <h3>Add Invoice
-                <a href="{{ route('invoice.view') }}" class="btn btn-success float-right"> <i class="fa fa-list"></i>Invoice List</a>
+                <a href="{{ route('invoice.view') }}" class="btn btn-success float-right"> <i class="fa fa-list"></i> Invoice List</a>
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
                 <div class="form-row">
-                  <div class="form-group col-md-1">
+                  <div class="form-group col-md-2">
                     <label for="name">Invoice No</label>
                     <input style="background-color:#D8FDBA;" class="form-control form-control-sm" type="text" id="invoice_no" name="invoice_no" value="{{ $invoice_no }}" readonly>
                     <font style="color:red;">{{ ($errors->has('invoice_no')) ? ($errors->first('invoice_no')) : '' }}</font>
@@ -78,7 +78,7 @@
                   </div>
 
 
-                  <div class="form-group col-md-1" style="padding-top:30px;">
+                  <div class="form-group col-md-1" style="padding-top:5px;">
                     <a class="btn btn-success addeventmore btn-sm"><i class="fa fa-plus-circle"></i>Add</a>
                   </div>
                 </div>

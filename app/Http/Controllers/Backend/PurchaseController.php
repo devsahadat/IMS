@@ -37,8 +37,16 @@ class PurchaseController extends Controller
       $count_category = count($request->category_id);
       for($i=0; $i<$count_category ; $i++){
         $purchase = new Purchase();
+        $check = Purchase::orderBy('id','desc')->first();
         $purchase->date = date('y-m-d', strtotime($request->date[$i]));
-        $purchase->purchase_no = $request->purchase_no[$i];
+        if ($check == null) {
+          $purchase->purchase_no = 'PP'.'1';
+        }else{
+          $id = Purchase::orderBy('id','desc')->first()->id;
+          $id = $id+1;
+          $purchase->purchase_no = 'PP'.$id;
+        }
+        // $purchase->purchase_no = $request->purchase_no[$i];
         $purchase->supplier_id = $request->supplier_id[$i];
         $purchase->product_id = $request->product_id[$i];
         $purchase->category_id = $request->category_id[$i];

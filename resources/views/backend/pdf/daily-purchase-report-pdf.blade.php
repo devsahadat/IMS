@@ -9,17 +9,17 @@
       <div class="row">
         <div style="margin:0 auto; text-align:center">
           <p style="text-align:center">Purchase Report ({{ date('Y-m-d', strtotime($start_date)) }} - {{ date('Y-m-d', strtotime($end_date)) }})</p>
-          <strong><span style="font-size:20px;">Team Learner POS <br>
-            Shibganj,Sylhet
+          <div><img src="{{ url('public/upload/logo.png') }}" alt="" style="width:80px; height:70px;"></div>
+          <strong><span style="font-size:20px; color:#28a745">Team Fix-IT IMS
           </span></strong>
-          <p style="text-align:center">Call : +8801720553737</p>
+          <p style="text-align: center;"><b>Tilaghor,Sylhet</b><br>Call : +8801738309749</p>
         </div>
       </div>
       <hr>
       <div class="row">
         <table width="100%" border="1">
             <thead>
-              <tr>
+              <tr style="background-color: #28a745;">
                 <th width="5%">SL.</th>
                 <th width="5%">Purchase No</th>
                 <th width="10%">Date</th>
@@ -50,7 +50,7 @@
               @endforeach
               <tr>
                 <td  colspan="6" style="text-align:right;">Grand Total</td>
-                <td>{{ $total }}</td>
+                <td style="background-color: red;"><strong>{{ $total }}</strong></td>
               </tr>
             </tbody>
         </table>
@@ -60,7 +60,7 @@
             <?php
               $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
              ?>
-             <i>Printing Time : {{ $date->format('F j, Y, g:i a') }}</i>
+             <i style="background-color: #28a745;">Printing Time : {{ $date->format('F j, Y, g:i a') }}</i>
         </div>
       </div>
     </div>

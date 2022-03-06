@@ -9,10 +9,10 @@
       <div class="row">
         <div style="margin:0 auto; text-align:center">
           <p style="text-align:center">Customer Wisr Credit Report</p>
-          <strong><span style="font-size:20px;">Team Learner POS <br>
-            Shibganj,Sylhet
+          <div><img src="{{ url('public/upload/logo.png') }}" alt="" style="width:80px; height:70px;"></div>
+          <strong><span style="font-size:20px; color:#28a745">Team Fix-IT IMS
           </span></strong>
-          <p style="text-align:center">Call : +8801720553737</p>
+          <p style="text-align: center;"><b>Tilaghor,Sylhet</b><br>Call : +8801738309749</p>
         </div>
       </div>
       <hr>
@@ -20,7 +20,7 @@
         <div class="com-md-12">
           <table width="100%" border="1">
               <thead>
-                <tr>
+                <tr style="background-color: #28a745;">
                   <th>SL.</th>
                   <th>Customer Name</th>
                   <th>Invoice No</th>
@@ -49,14 +49,14 @@
                 @endforeach
                 <tr>
                   <td  style="text-align:right;" colspan="4">Due Total</td>
-                  <td>{{ $total }}</td>
+                  <td style="background-color: red;"><strong>{{ $total }}</strong></td>
                 </tr>
               </tbody>
           </table>
             <?php
               $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
              ?>
-             <i>Printing Time : {{ $date->format('F j, Y, g:i a') }}</i>
+             <i style="background-color: #28a745;">Printing Time : {{ $date->format('F j, Y, g:i a') }}</i>
         </div>
       </div>
     </div>

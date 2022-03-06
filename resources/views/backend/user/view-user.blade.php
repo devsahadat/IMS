@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">User</li>
           </ol>
         </div><!-- /.col -->
@@ -44,6 +44,7 @@
                       <th>Role</th>
                       <th>Name</th>
                       <th>Email</th>
+                      <th>Code</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -54,6 +55,7 @@
                       <td>{{ $user->role }}</td>
                       <td>{{ $user->name }}</td>
                       <td>{{ $user->email }}</td>
+                      <td>{{ $user->code }}</td>
                       <td>
                         <a href="{{ route('users.edit',$user->id) }}" title="Edit" class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i> </a>
                         <a href="#deleteModal{{ $user->id }}" data-toggle="modal" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>

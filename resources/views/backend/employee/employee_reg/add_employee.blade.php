@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Employee</li>
           </ol>
         </div><!-- /.col -->
@@ -38,7 +38,7 @@
                 @else
                 Add Employee
                 @endif
-                <a href="{{ route('employee.registration.view') }}" class="btn btn-success float-right"> <i class="fa fa-list"></i>Employee List</a>
+                <a href="{{ route('employee.registration.view') }}" class="btn btn-success float-right"> <i class="fa fa-list"></i> Employee List</a>
               </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -64,6 +64,11 @@
                     <label for="mobile">Mobile Number <font style="color:red;">*</font></label>
                     <input type="text" class="form-control form-control-sm" id="mobile" name="mobile" value="{{@$editData->mobile}}">
                     <font style="color:red;">{{ ($errors->has('mobile')) ? ($errors->first('mobile')) : '' }}</font>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="mobile">Email<font style="color:red;">*</font></label>
+                    <input type="text" class="form-control form-control-sm" id="email" name="email" value="{{@$editData->email}}">
+                    <font style="color:red;">{{ ($errors->has('email')) ? ($errors->first('email')) : '' }}</font>
                   </div>
                   <div class="form-group col-md-4">
                     <label for="address">Address <font style="color:red;">*</font></label>

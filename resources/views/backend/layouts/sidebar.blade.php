@@ -4,6 +4,7 @@
 @endphp
 
 <!-- Sidebar Menu -->
+@if(Auth::user()->approved == '1')
 <nav class="mt-2">
   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
@@ -22,6 +23,12 @@
           <a href="{{ route('users.view') }}" class="nav-link {{ ($route == 'users.view') ? 'active' : '' }}">
             <i class="far fa-circle nav-icon"></i>
             <p>View User</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('unapprovedusers.view') }}" class="nav-link {{ ($route == 'unapprovedusers.view') ? 'active' : '' }}">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Approve User</p>
           </a>
         </li>
 
@@ -55,6 +62,7 @@
       </ul>
     </li>
 
+  @if(Auth::user()->role == 'Admin')
     <li class="nav-item {{ ($prefix == '/employee') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link">
       <i class="nav-icon fas fa-tree"></i>
@@ -97,6 +105,7 @@
     </ul>
   </li>
 
+
     <li class="nav-item {{ ($prefix == '/suppliers') ? 'menu-open' : '' }}">
       <a href="#" class="nav-link">
         <i class="nav-icon fas fa-edit"></i>
@@ -116,7 +125,7 @@
 
       </ul>
     </li>
-
+  @endif
     <li class="nav-item {{ ($prefix == '/customers') ? 'menu-open' : '' }}">
       <a href="#" class="nav-link">
         <i class="nav-icon fas fa-table"></i>
@@ -211,7 +220,6 @@
             <p>View Products</p>
           </a>
         </li>
-
       </ul>
     </li>
 
@@ -309,6 +317,7 @@
 
       </ul>
     </li>
+    @if(Auth::user()->role == 'Admin')
   <li class="nav-item {{ ($prefix == '/setups') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link">
       <i class="nav-icon fas fa-book"></i>
@@ -326,7 +335,9 @@
         </a>
       </li>
     </ul>
-  </li><li class="nav-item {{ ($prefix == '/account') ? 'menu-open' : '' }}">
+  </li>
+  @endif
+  <li class="nav-item {{ ($prefix == '/account') ? 'menu-open' : '' }}">
       <a href="#" class="nav-link">
         <i class="nav-icon fas fa-th"></i>
         <p>
@@ -344,9 +355,14 @@
         </li>
       </ul>
     </li>
+  
+
+
       </ul>
     </li>
 
   </ul>
 </nav>
+@endif
+
 <!-- /.sidebar-menu -->
