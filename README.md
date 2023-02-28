@@ -1,4 +1,6 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<p align="center">
+  <img src="https://github.com/devsahadat/IMS/blob/master/public/upload/logo1.png" width="350" title="hover text">
+</p>
 
 <h1 align="center">Hi 👋, I'm Sahadat Husain</h1>
 <h2 align="center">Inventory Management System - POS web app with Laravel</h2>
